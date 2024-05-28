@@ -1,0 +1,50 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav.navigation {
+  background-color: #232323;
+}
+
+nav.navigation > .container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+nav.navigation a:link,
+nav.navigation a:visited {
+  padding: 1rem 2rem;
+  color: white;
+  text-decoration: none;
+}
+
+nav.navigation a:hover,
+nav.navigation a.active {
+  background-color: #fff;
+  color: black;
+}
+
+nav.navigation a:active {
+  background-color: rgb(0, 84, 114);
+  color: white;
+}
+
+.leaflet-container {
+  width: 100%;
+  min-height: 37.5rem;
+}
