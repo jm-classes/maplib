@@ -4,7 +4,7 @@ export default function Home() {
   const [stations, setStations] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:9000/api/stations')
+    fetch(`${import.meta.env.VITE_API_URL}/api/stations`)
       .then((res) => res.json())
       .then((stationsData) => {
         setStations(stationsData);
