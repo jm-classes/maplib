@@ -12,21 +12,23 @@ async function getStations(req, res) {
   const minCapacity = parseInt(qs.get('minCapacity'));
   const maxCapacity = parseInt(qs.get('maxCapacity'));
 
-  const name = req.query.name ?? '';
+  const name = req.query.name ?? null;
 
   try {
-    const stations = await Stations.find({
-      capacity: {
-        $lte: maxCapacity || Number.POSITIVE_INFINITY,
-        $gte: minCapacity || Number.NEGATIVE_INFINITY,
-      },
-      $text: {
-        $search: name,
-        $language: 'fr',
-      },
-    });
-    // Nécessite la création d'un index dans la BDD :
-    //  db.stations.createIndex({ name: 'text' })
+    const findQuery = {};
+
+    if (maxCapacity || minCapacity) {
+      findQuery.capacity = {};
+      if (maxCapacity) findQuery.capacity.$lte = maxCapacity;
+      if (minCapacity) findQuery.capacity.$gte = minCapacity;
+    }
+
+    if (name) {
+      // Nécessite la création d'un index dans la BDD : db.stations.createIndex({ name: 'text' })
+      findQuery.$text = { $search: name, $language: 'fr' }
+    }
+
+    const stations = await Stations.find(findQuery);
 
     res.json(stations);
   } catch (err) {
