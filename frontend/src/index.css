@@ -20,7 +20,7 @@ nav.navigation {
   background-color: #232323;
 }
 
-nav.navigation > .container {
+nav.navigation>.container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -47,4 +47,38 @@ nav.navigation a:active {
 .leaflet-container {
   width: 100%;
   min-height: 37.5rem;
+}
+
+a:link,
+a:visited {
+  color: rgb(0, 107, 143);
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: rgb(0, 191, 255);
+}
+
+.stations-list {
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+}
+
+.stations-list tr:nth-child(even) {
+  background-color: #dbdbdb;
+}
+
+.stations-list th {
+  background-color: rgb(66, 66, 66);
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.stations-list td,
+.stations-list th {
+  padding: 0.4em 0.2em;
 }

@@ -8,7 +8,7 @@ import router from './router.js';
 
 const app = express();
 
-app.use(cors());
+app.use('/api', cors());
 app.use('/api', router)
 
 mongoose
